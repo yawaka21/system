@@ -19,19 +19,7 @@
 <div class="tableContainer">
         <table class="table table-success table-striped">
             <thead>
-                    <!-- <tr>
-                        <th scope="col"></th>
-                        <th scope="col">ASSIGNED</th>
-                        <th scope="col">TIME</th>
-                        <th scope="col">ROUTE</th>
-                        <th scope="col">TYPE</th>
-                        <th scope="col">C.O.R</th>
-                        <th scope="col" colspan="2">OPENING TICKET STUB NO.</th>
-                        <th scope="col">TOTAL</th>
-                        <th scope="col">DRIVER'S</th>
-                        <th scope="col">CONDUCTOR'S</th>
-                        <th scope="col">Date</th>
-                    </tr> -->
+                
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">BUS NO.</th>
