@@ -24,15 +24,22 @@ if (isset($_GET['releaseid'])) {
 
         if ($result1) {
             
-            $delete_query = "DELETE FROM management_tb WHERE id = $id";
-            $result2 = mysqli_query($conn, $delete_query);
+            $departure = "INSERT INTO departure_tb (bus_no,time_dept,route_destination,unit,passenger,drivers_name,conductors_name)VALUES('$bus_no','$time_dept','$route','$unit','$passenger','$dName','$cName')";
+            $result2 = mysqli_query($conn,$departure);
+            if($result2)
+            {
+                $delete = "DELETE FROM management_tb WHERE id = $id";
+                $result3 = mysqli_query($conn,$delete);
 
-            if ($result2) {
-                
-                header('Location: Admin-departure.php');
-                exit();
-              
-            }
+                if($result3)
+                {
+                    header('location:Admin-departure.php');
+                }
+                else
+                {
+
+                }
+             }
         } else {
             
         }

@@ -15,7 +15,6 @@
 <body>
     
 <div class="tableContainer">
-    <button type="button" class="btn btn-primary"><a style="color: white; text-decoration:none;" href="Main-Add.php">Add</a></button>
         <table class="table table-success table-striped">
             <thead>
         <tr>
@@ -32,20 +31,41 @@
         </tr>
             </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>064310</td>
-                    <td>10:00</td>
-                    <td>Danao City</td>
-                    <td>ALC</td>
-                    <td>15</td>
-                    <td>BATMAN</td>
-                    <td>ROBIN</td>
-                    <td>
-                    <button type="button" class="btn btn-primary">Save</button>
-                    </td>
-                    </tr>
-                
+              <?php
+                    include('Connection.php');
+                    $sql = "SELECT *FROM departure_tb";
+                    $result = mysqli_query($conn,$sql);
+                    
+                    if($result)
+                    {
+                        while($row = mysqli_fetch_assoc($result))
+                        {
+                            $id = $row['id'];
+                            $bus_no = $row['bus_no'];
+                            $time_dept = $row['time_dept'];
+                            $route = $row['route_destination'];
+                            $unit = $row['unit'];
+                            $passenger = $row['passenger'];
+                            $dName = $row['drivers_name'];
+                            $cName = $row['conductors_name'];
+
+                            echo
+                            '
+                            <tr>
+                                 <th scope="row">'.$id.'</th>
+                                 <td>'.$bus_no.'</td>
+                                 <td>'.$time_dept.'</td>
+                                 <td>'.$route.'</td>
+                                 <td>'.$unit.'</td>
+                                 <td>'.$passenger.'</td>
+                                 <td>'.$dName.'</td>
+                                 <td>'.$cName.'</td>
+                                 <td><button type="button" class="btn btn-success"><a href="#">Arrived</a></button></td>
+                            </tr>
+                            ';
+                        }
+                    }
+              ?>
                 </tbody>
         </table>
 </div> 
