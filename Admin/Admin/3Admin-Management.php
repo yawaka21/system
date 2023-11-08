@@ -93,26 +93,6 @@
                             }
                         }
                     ?>
-                    <!-- <tr>
-                    <th scope="row">1</th>
-                    <td>064310</td>
-                    <td>10:00</td>
-                    <td>Danao City</td>
-                    <td>ALC</td>
-                    <td>5625</td>
-                    <td>5185409</td>
-                    <td>654980</td>
-                    <td>15</td>
-                    <td>BATMAN</td>
-                    <td>ROBIN</td>
-                    <td>06/27/2023</td>
-                    <td><button type="button" class="btn btn-success">Edit</button>
-                    </td>
-                    <td>
-                         <button type="button" class="btn btn-danger">Delete</button>
-                    </td>
-                    </tr> -->
-                
                 </tbody>
         </table>
 </div> 
