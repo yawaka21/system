@@ -1,5 +1,6 @@
 <?php
     include("sidevar.html");
+    include 'Connection.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +23,6 @@
                 <th scope="col">Buss Number</th>
                 <th scope="col">Drivers Name</th>
                 <th scope="col">Conductor's Name</th>
-                <th scope="col">Unit</th>
                 <th scope="col">Item Description</th>
                 <th scope="col">Date</th>
                 <th scope="col">Operation</th>
@@ -32,22 +32,44 @@
             <tbody>
 
             <?php
+
+                $sql = "SELECT *FROM lost_tb";
+                $result = mysqli_query($conn,$sql);
                 
-            ?>
-                <!-- <tr>
-                    <th scope="row">1</th>
-                    <td>064310</td>
-                    <td>Jonel D. Gelig</td>
-                    <td>Secret D. Luffy</td>
-                    <td>AC</td>
-                    <td>Bag</td>
-                    <td>08/29/2023</td>
+                if($result)
+                {
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                        $id = $row['id'];
+                        $bus_no = $row['bus_no'];
+                        $dname = $row['drivers_name'];
+                        $cname = $row['conductors_name'];
+                        $item = $row['item'];
+                        $date = $row['date'];
+
+                        echo
+                        '
+                <tr>
+                    <th scope="row">'.$id.'</th>
+                    <td>'.$bus_no.'</td>
+                    <td>'.$dname.'</td>
+                    <td>'.$cname.'</td>
+                    <td>'.$item.'</td>
+                    <td>'.$date.'</td>
                     <td>
                     <button type="button" class="btn btn-info">Details</button>
-                    <button type="button" class="btn btn-success">Edit</button>
-                    
+                    <button type="button" class="btn btn-success"><a href="5edit.php?editid='.$id.'">Edit</a></button>
+                    <button type="button" class="btn btn-Danger">Delete</button>
+
                     </td>
-                </tr> -->
+                </tr>
+                        ';
+
+                    }
+                }
+                
+            ?>
+                
             
             </tbody>
     </table>
