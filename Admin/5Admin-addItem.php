@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="tableContainer">
-<button type="button" class="btn btn-success">Add Item</button>
+<button type="button" class="btn btn-success"><a href="5add.php">Add Item</a></button>
     <table class="table table-success table-striped">
 
         <thead>
@@ -30,7 +30,11 @@
             </tr>
         </thead>
             <tbody>
-                <tr>
+
+            <?php
+                
+            ?>
+                <!-- <tr>
                     <th scope="row">1</th>
                     <td>064310</td>
                     <td>Jonel D. Gelig</td>
@@ -43,7 +47,7 @@
                     <button type="button" class="btn btn-success">Edit</button>
                     
                     </td>
-                </tr>
+                </tr> -->
             
             </tbody>
     </table>

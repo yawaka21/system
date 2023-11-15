@@ -79,8 +79,8 @@
                                 <td><button type="button" class="btn btn-danger"><a href="1delete.php?deleteid='.$id.'">Delete</a></button></td>
                                 </tr>
                                 
-                               ';
-
+                               '; 
+                               
                             }
                         }
 
