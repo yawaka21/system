@@ -3,6 +3,7 @@ body{
     background: #FFF; 
     color: #000;
     font-family: 'Roboto';
+    height: 2000px;
     
 }
 p
@@ -59,11 +60,12 @@ p
 .tablecontianer
 {
     margin-right: 88px;
-    height: 927px;
+    /* height: 700px; */
     flex-shrink: 0;
     border-radius: 20px;
     background: #EBEBEB;
     margin-left: 88px;
+    padding: 20px;
 }
 
 .tableButtonContainer
@@ -74,7 +76,7 @@ p
     justify-content: space-between;
     padding:40px
 }
-.stambyBtn
+/* .stambyBtn
 {
     width: 228px;
     height: 87px;
@@ -107,6 +109,10 @@ p
 
 .departureBtn
 {
+
+} */
+.tableButtonContainer button
+{
     width: 217px;
     height: 87px;
     flex-shrink: 0;
@@ -120,7 +126,6 @@ p
     line-height: normal; 
     border-style: none;
 }
-
 .tablecontianer button:hover{
     width: 228px;
     height: 87px;
@@ -139,7 +144,7 @@ p
 .tableContainer
 {
     width: 1064px;
-    height: 604px;
+    
     flex-shrink: 0;
     border-radius: 20px;
     background: #FFF;
@@ -147,72 +152,50 @@ p
     margin-left: 55px;
 }
 
-table{
 
-	width: 1064px;
-
-	box-shadow: -1px 12px 12px -6px rgba(0,0,0,0.5);
-
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px; 
+    border-radius: 20px; 
 }
 
-table, td, th{
-
-	padding: 20px;
-
-	border: 1px solid lightgray;
-
-	border-collapse: collapse;
-
-	text-align: center;
-
-	cursor: pointer;
-
+table, th, td {
+    
+    padding: 8px;
+    text-align: left;
 }
 
-td{
 
-	font-size: 18px;
-
+.loadToggleContainer
+{
+    margin-top: 30px;
+    display: flex;
+   justify-content: center;
 }
 
-th{
-
-	background-color: blue;
-
-	color: white;
-
+.loadToggleContainer button
+{
+        width: 200px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 10px;
+background: #C72A25;
+    border-style: none;
+    font-size: 20px;
+   
+    color: white;
 }
 
-tr:nth-child(odd){
-
-	background-color: lightblue;
-
-}
-
-tr:nth-child(odd):hover{
-
-	background-color: dodgerblue;
-
-	color: white;
-
-	transform: scale(1.5);
-
-	transition: transform 300ms ease-in;
-
-}
-
-tr:nth-child(even){
-
-	background-color: #ededed;
-
-}
-
-tr:nth-child(even):hover{
-
-	background-color: lightgray;
-
-	transform: scale(1.5);
-
-	transition: transform 300ms ease-in;
-
+.loadToggleContainer button:hover
+{
+    width: 200px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 10px;
+background: #C72A25;
+    border-style: none;
+    font-size: 20px;
+   
+    color: white;
 }

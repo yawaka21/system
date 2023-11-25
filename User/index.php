@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,34 +15,41 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
    
-    <script>
+   
+     <script>
         $(document).ready(function () {
             // Initially, hide all rows beyond the first 10
-            $('table tbody tr:gt(9)').hide();
+            $('table tbody tr:gt(4)').hide();
 
-            // Handle the "Load More" or "Load Less" button click
-            $('#loadToggleBtn').on('click', function () {
+            // Keep track of whether the tables are currently expanded
+            var tablesExpanded = false;
+
+            // Handle the "Show More" or "Load Less" button click
+            $('#showMoreBtn').on('click', function () {
                 // Toggle visibility of the next 10 rows
-                $('table tbody tr:hidden:lt(10)').toggle();
+                $('table tbody tr:lt(15)').toggle();
 
                 // Update the button text based on visibility
-                var buttonText = $(this).text() === 'Load More' ? 'Load Less' : 'Load More';
+                var buttonText = tablesExpanded ? 'Show More' : 'Load Less';
                 $(this).text(buttonText);
+
+                // Toggle the state of the tables
+                tablesExpanded = !tablesExpanded;
             });
 
             // Handle the button click to load Table 1
-            $('#loadTable1Btn').on('click', function () {
-                loadTable('loadTable1.php'); // Adjust the URL to your server-side script for Table 1
+            $('#stambyBtn').on('click', function () {
+                loadTable('busStamby.php'); // Adjust the URL to your server-side script for Table 1
             });
 
             // Handle the button click to load Table 2
-            $('#loadTable2Btn').on('click', function () {
-                loadTable('departure.php'); // Adjust the URL to your server-side script for Table 2
+            $('#arrivalBtn').on('click', function () {
+                loadTable('arrival.php'); // Adjust the URL to your server-side script for Table 2
             });
 
             // Handle the button click to load Table 3
-            $('#loadTable3Btn').on('click', function () {
-                loadTable('arrival.php'); // Adjust the URL to your server-side script for Table 3
+            $('#departureBtn').on('click', function () {
+                loadTable('departure.php'); // Adjust the URL to your server-side script for Table 3
             });
 
             function loadTable(url) {
@@ -55,6 +61,32 @@
                     success: function (data) {
                         // Replace the content of the table container with the new table
                         $('.tableContainer').html(data);
+
+                        // Hide the rows beyond the first 10 for the new table
+                        $('table tbody tr:gt(9)').hide();
+                        
+                        // Add "Show More" button for the new table
+                        var showMoreBtn = $('<button>', {
+                            id: 'showMoreBtn',
+                            text: 'Show More',
+                            click: function () {
+                                // Toggle visibility of the next 10 rows for the new table
+                                $('table tbody tr:lt(4)').toggle();
+
+                                // Update the button text based on visibility
+                                var buttonText = tablesExpanded ? 'Show More' : 'Load Less';
+                                $(this).text(buttonText);
+
+                                // Toggle the state of the tables
+                                tablesExpanded = !tablesExpanded;
+                            }
+                        });
+
+                        // Append the "Show More" button to the container
+                        $('.loadToggleContainer').html(showMoreBtn);
+
+                        // Reset the state of the tables
+                        tablesExpanded = false;
                     },
                     error: function () {
                         console.error('Error loading table');
@@ -65,11 +97,11 @@
     </script>
     
 </head>
-<body>
 <?php
-    include("header.html");
+include 'header.html'
 ?>
-
+<body>
+ 
     <div class="bodypic">
         <img src="imgaes/bodyPicture1.png">
     </div>
@@ -88,86 +120,29 @@
     
         <div class="tableButtonContainer">
             <div class="stambyButtonContainer">
-                <button class="stambyBtn">BUS STAMBY</button>
+                <button id="stambyBtn" class="stambyBtn">BUS STAMBY</button>
             </div>
 
             <div class="arrivalButtonContainer">
-              <a href="arrival.php"><button class="arrivalBtn">ARRIVALS</button></a> 
+                <button class="arrivalBtn" id="arrivalBtn">ARRIVALS</button>
             </div>
 
             <div class="departureButtonContainer">
-                <button class="departureBtn">DEPARTURES</button>
+                <button class="departureBtn" id="departureBtn">DEPARTURES</button>
             </div>
         </div>
 
-        <div class="tableContainer">
-       
-        <table>
-
-<thead>
-        <tr>
-
-
-            <th scope="col">BUS NO.</th>
-            <th scope="col">DESTINATION</th>
-            <th scope="col">SERVICE</th>
-            <th scope="col">Cor Number</th>
-            <th scope="col">Departure Time</th>
-
-        </tr>
-</thead>
-
-<tbody>
-
-<?php
-                include 'Connection.php';
-                $query = "SELECT *FROM bus_stamby";
-
-                $result = mysqli_query($conn,$query);
-    
-                if($result)
-                {
-                    while($row = mysqli_fetch_assoc($result))
-                    {
-                        $bus_no = $row['bus_no'];
-                        $route = $row['route_destination'];
-                        $unit = $row['unit'];
-                        $cor_number = $row['cor_number'];
-                        $departure_time = $row['departure_time'];
-
-                        
-                        echo'
-                        <tr>
-                        <td>'.$bus_no.'</td>
-                        <td>'.$route.'</td>
-                        <td>'.$unit.'</td>
-                        <td>'.$cor_number.'</td>
-                        <td>'.$departure_time.'</td>
-                        </tr>
-                        ';
-                    }
-                }
-                else
-                {
-
-                }
-                ?>
-                
-                </tbody>
-
-
- 
-            </table>
+    <div class="tableContainer">
+        <?php 
+            include 'busStamby.php';
+        ?>
+    </div>
+        <div class="loadToggleContainer">
+           <div><button id="showMoreBtn">Show More</button></div>
         </div>
-            <div class="loadToggleContainer">
-                <button id="loadToggleBtn">Load More</button>
-        </div>  
-        
-        <div class="loadTableContainer">
-        <button id="loadTable1Btn">Load Table 1</button>
-        <button id="loadTable2Btn">Load Table 2</button>
-        <button id="loadTable3Btn">Load Table 3</button>
-    </div>  
+    </div>
+
+
     </div>
 </body>
 </html>
