@@ -1,3 +1,6 @@
+<?php
+  include 'Connection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,53 +12,61 @@
 </head>
 <body>
 
-<form class="row g-3">
+<form class="row g-3" method="post">
 
  <!-- BUS NUMBER CLASS -->
 <div class="col-12">
   <label for="inputAddress" class="form-label">Bus Number</label>
-  <input type="text" class="form-control" id="inputAddress" placeholder="Enter Bus Number">
+  <input type="text" class="form-control" name="bus_no"  placeholder="Enter Bus Number">
 </div>
 
 <!-- DEPARTURE TIME CLASS -->
 <div class="col-12">
   <label for="inputAddress" class="form-label">Departure Time</label>
-  <input type="text" class="form-control" id="inputAddress" placeholder="Enter time of Departure">
+  <input type="text" class="form-control" name="departure_time" placeholder="Enter time of Departure">
 </div>
 
 <!-- DESTINATION INPUT -->
 <div class="col-12">
   <label for="inputAddress" class="form-label">Destination</label>
-  <input type="text" class="form-control" id="inputAddress" placeholder="Enter Destination">
+  <input type="text" class="form-control" name="destination"  placeholder="Enter Destination">
 </div>
 
 <!--TYPE OF UNIT -->
 <div class="col-md-4">
   <label for="inputState" class="form-label">Unit</label>
-  <select id="inputState" class="form-select">
+  <select class="form-select" name="unit">
     <option selected>Unit</option>
     <option>Air Condation</option>
     <option>Not Air Condation</option>
   </select>
 </div>
 
-<!-- DRIVER'S NAME CLASS -->
-<div class="col-12">
-  <label for="inputAddress" class="form-label">Driver's Name</label>
-  <input type="text" class="form-control" id="inputAddress" placeholder="Enter Driver's Name">
-</div>
-
-<!-- CONDUCTOR'S NAME CLASS -->
-<div class="col-12">
-  <label for="inputAddress" class="form-label">Conductor's Name</label>
-  <input type="text" class="form-control" id="inputAddress" placeholder="Enter Conductor's Name">
-</div>
-
 <!-- SUBMIT -->
 <div class="col-12">
-  <button type="submit" class="btn btn-primary"> <a href="Admin/Admin-arrival.php">Sign in</a></button>
+  <button type="submit" name="submit" class="btn btn-primary">Sign in</button>
 </div>
 </form>
-
 </body>
 </html>
+
+<?php 
+  if(isset($_POST['submit']))
+  {
+    $bus_no = $_POST['bus_no'];
+    $departure_time = $_POST['departure_time'];
+    $destination = $_POST['destination'];
+    $unit = $_POST['unit'];
+
+    $sql = "INSERT INTO arrival_tb (bus_no,unit,departured_time,route_destination) VALUES ('$bus_no','$departure_time','$destination','$unit')";
+
+    $result = mysqli_query($conn,$sql);
+
+    if($result)
+    {
+        header('location:6Admin-arrival.php');
+
+    }
+
+  }
+?>

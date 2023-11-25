@@ -51,66 +51,59 @@
         </div>
 
         <div class="tableContainer">
-       
-        <table>
+       <!-- TABLE -->
+<table>
 
-<thead>
+        <thead>
         <tr>
-
-
             <th scope="col">BUS NO.</th>
+            <th scope="col">DEPARTURED</th>
             <th scope="col">DESTINATION</th>
             <th scope="col">SERVICE</th>
-            <th scope="col">Cor Number</th>
-            <th scope="col">Departure Time</th>
-
+            <th scope="col">PASSENGER</th>
+            <th scope="col">DRIVER'S NAME</th>
+            <th scope="col">CONDOCTOR'S NAME</th>
+            
         </tr>
-</thead>
-
-<tbody>
-
-<?php
-                include 'Connection.php';
-                $query = "SELECT *FROM bus_stamby";
-
-                $result = mysqli_query($conn,$query);
-    
-                if($result)
-                {
-                    while($row = mysqli_fetch_assoc($result))
+            </thead>
+                <tbody>
+              <?php
+                    include('Connection.php');
+                    $sql = "SELECT *FROM departure_tb";
+                    $result = mysqli_query($conn,$sql);
+                    
+                    if($result)
                     {
-                        $bus_no = $row['bus_no'];
-                        $route = $row['route_destination'];
-                        $unit = $row['unit'];
-                        $cor_number = $row['cor_number'];
-                        $departure_time = $row['departure_time'];
+                        while($row = mysqli_fetch_assoc($result))
+                        {
+                            $bus_no = $row['bus_no'];
+                            $time_dept = $row['time_dept'];
+                            $route = $row['route_destination'];
+                            $unit = $row['unit'];
+                            $passenger = $row['passenger'];
+                            $dName = $row['drivers_name'];
+                            $cName = $row['conductors_name'];
 
-                        
-                        echo'
-                        <tr>
-                        <td>'.$bus_no.'</td>
-                        <td>'.$route.'</td>
-                        <td>'.$unit.'</td>
-                        <td>'.$cor_number.'</td>
-                        <td>'.$departure_time.'</td>
-                        </tr>
-                        ';
+                            echo
+                            '
+                            <tr>
+                                 <td>'.$bus_no.'</td>
+                                 <td>'.$time_dept.'</td>
+                                 <td>'.$route.'</td>
+                                 <td>'.$unit.'</td>
+                                 <td>'.$passenger.'</td>
+                                 <td>'.$dName.'</td>
+                                 <td>'.$cName.'</td>
+                            </tr>
+                            ';
+                        }
                     }
-                }
-                else
-                {
-
-                }
-                ?>
-                
+              ?>
                 </tbody>
-
-
- 
-            </table>
-        </div>
-
+        </table>
     </div>
+
+</div>
 </body>
 </html>
 

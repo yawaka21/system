@@ -59,7 +59,7 @@
                     <td>
                     <button type="button" class="btn btn-info">Details</button>
                     <button type="button" class="btn btn-success"><a href="5edit.php?editid='.$id.'">Edit</a></button>
-                    <button type="button" class="btn btn-Danger">Delete</button>
+                    <button type="button" class="btn btn-Danger"><a href="5delete.php?deleteid='.$id.'">Delete</a></button>
 
                     </td>
                 </tr>

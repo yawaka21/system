@@ -68,7 +68,7 @@ if(isset($_POST['submit']))
     $cName = $_POST['cName'];
     $item = $_POST['item'];
 
-    $sql = "UPDATE lost_tb SET id = '$id', bus_no = '$bus_no', drivers_name = '$dName', conductors_name = '$cName', item = '$item'";
+    $sql = "UPDATE lost_tb SET id = '$id', bus_no = '$bus_no', drivers_name = '$dName', conductors_name = '$cName', item = '$item' WHERE id ='$id'";
 
     $result = mysqli_query($conn,$sql);
 

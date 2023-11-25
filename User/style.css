@@ -1,0 +1,218 @@
+body{
+    margin: 0;
+    background: #FFF; 
+    color: #000;
+    font-family: 'Roboto';
+    
+}
+p
+{
+    margin: 0;
+}
+.bodypic
+{
+    
+    height: 600px;
+    flex-shrink: 0;
+    
+}
+.bodypic img {
+    width: 100%;
+    height: 100%;
+}
+
+.section2{
+    margin-top: 30px;
+    display: block;
+    margin-left: 88px;
+}
+
+.p1{
+    font-size: 64px;
+    font-style: normal;
+    line-height: normal;
+}
+.p2{
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.p3
+{
+    color: #D53C31;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+    
+}
+
+
+.section3 {
+    display: block;
+    margin-left: 88px;
+    margin-top: 50px;
+    margin-bottom: 41px;
+}
+.tablecontianer
+{
+    margin-right: 88px;
+    height: 927px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #EBEBEB;
+    margin-left: 88px;
+}
+
+.tableButtonContainer
+{
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:40px
+}
+.stambyBtn
+{
+    width: 228px;
+    height: 87px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #666;
+    color: #FFF;
+    font-size: 24px;
+    font-style: normal;
+    line-height: normal;
+    cursor:pointer;
+    border-style: none;
+}
+
+.arrivalBtn
+{
+    width: 217px;
+    height: 87px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    color: #000;
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+    border-style: none;
+}
+
+.departureBtn
+{
+    width: 217px;
+    height: 87px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    color: #000;
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+    border-style: none;
+}
+
+.tablecontianer button:hover{
+    width: 228px;
+    height: 87px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #666;
+    color: #FFF;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    transition: 1s; 
+    cursor:pointer;
+}
+
+.tableContainer
+{
+    width: 1064px;
+    height: 604px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    border-color: #000;
+    margin-left: 55px;
+}
+
+table{
+
+	width: 1064px;
+
+	box-shadow: -1px 12px 12px -6px rgba(0,0,0,0.5);
+
+}
+
+table, td, th{
+
+	padding: 20px;
+
+	border: 1px solid lightgray;
+
+	border-collapse: collapse;
+
+	text-align: center;
+
+	cursor: pointer;
+
+}
+
+td{
+
+	font-size: 18px;
+
+}
+
+th{
+
+	background-color: blue;
+
+	color: white;
+
+}
+
+tr:nth-child(odd){
+
+	background-color: lightblue;
+
+}
+
+tr:nth-child(odd):hover{
+
+	background-color: dodgerblue;
+
+	color: white;
+
+	transform: scale(1.5);
+
+	transition: transform 300ms ease-in;
+
+}
+
+tr:nth-child(even){
+
+	background-color: #ededed;
+
+}
+
+tr:nth-child(even):hover{
+
+	background-color: lightgray;
+
+	transform: scale(1.5);
+
+	transition: transform 300ms ease-in;
+
+}

@@ -38,76 +38,61 @@
     
         <div class="tableButtonContainer">
             <div class="stambyButtonContainer">
-                <button class="stambyBtn">BUS STAMBY</button>
+              <a href="index.php"><button class="stambyBtn">BUS STAMBY</button></a>
             </div>
 
             <div class="arrivalButtonContainer">
-              <a href="arrival.php"><button class="arrivalBtn">ARRIVALS</button></a> 
+              <a href="#"><button class="arrivalBtn">ARRIVALS</button></a> 
             </div>
 
             <div class="departureButtonContainer">
-                <button class="departureBtn">DEPARTURES</button>
+             <a href="departure.php"><button class="departureBtn">DEPARTURES</button></a>
             </div>
         </div>
 
         <div class="tableContainer">
        
-        <table>
-
-<thead>
+    <table>
+            <thead>
         <tr>
-
-
             <th scope="col">BUS NO.</th>
-            <th scope="col">DESTINATION</th>
             <th scope="col">SERVICE</th>
-            <th scope="col">Cor Number</th>
-            <th scope="col">Departure Time</th>
-
+            <th scope="col">DEPARTURED</th>
+            <th scope="col">Route Destination</th>
         </tr>
-</thead>
+            </thead>
+                <tbody>
+                    <?php 
+                    include 'Connection.php';
+                        $sql = "SELECT *FROM arrival_tb";
 
-<tbody>
+                        $result = mysqli_query($conn,$sql);
 
-<?php
-                include 'Connection.php';
-                $query = "SELECT *FROM bus_stamby";
+                       while($row = mysqli_fetch_assoc($result)) {
 
-                $result = mysqli_query($conn,$query);
-    
-                if($result)
-                {
-                    while($row = mysqli_fetch_assoc($result))
-                    {
-                        $bus_no = $row['bus_no'];
-                        $route = $row['route_destination'];
-                        $unit = $row['unit'];
-                        $cor_number = $row['cor_number'];
-                        $departure_time = $row['departure_time'];
 
                         
-                        echo'
-                        <tr>
-                        <td>'.$bus_no.'</td>
-                        <td>'.$route.'</td>
-                        <td>'.$unit.'</td>
-                        <td>'.$cor_number.'</td>
-                        <td>'.$departure_time.'</td>
-                        </tr>
-                        ';
-                    }
-                }
-                else
-                {
+                        $bus_no = $row['bus_no'];
+                        $unit = $row['unit'];
+                        $departure_time = $row['departured_time'];
+                        $route = $row['route_destination'];
 
-                }
-                ?>
+                        echo '
+                        <tr>
+                    
+                    <td>'.$bus_no.'</td>
+                    <td>'.$unit.'</td>
+                    <td>'.$departure_time.'</td>
+                    <td>'.$route.'</td>
+                    </tr>
+                        ';
+
+                       }
+                    ?>
+                    
                 
                 </tbody>
-
-
- 
-            </table>
+        </table>
         </div>
 
     </div>
