@@ -13,6 +13,56 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+   
+    <script>
+        $(document).ready(function () {
+            // Initially, hide all rows beyond the first 10
+            $('table tbody tr:gt(9)').hide();
+
+            // Handle the "Load More" or "Load Less" button click
+            $('#loadToggleBtn').on('click', function () {
+                // Toggle visibility of the next 10 rows
+                $('table tbody tr:hidden:lt(10)').toggle();
+
+                // Update the button text based on visibility
+                var buttonText = $(this).text() === 'Load More' ? 'Load Less' : 'Load More';
+                $(this).text(buttonText);
+            });
+
+            // Handle the button click to load Table 1
+            $('#loadTable1Btn').on('click', function () {
+                loadTable('loadTable1.php'); // Adjust the URL to your server-side script for Table 1
+            });
+
+            // Handle the button click to load Table 2
+            $('#loadTable2Btn').on('click', function () {
+                loadTable('departure.php'); // Adjust the URL to your server-side script for Table 2
+            });
+
+            // Handle the button click to load Table 3
+            $('#loadTable3Btn').on('click', function () {
+                loadTable('arrival.php'); // Adjust the URL to your server-side script for Table 3
+            });
+
+            function loadTable(url) {
+                // Make an AJAX request to fetch data from the server
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    dataType: 'html',
+                    success: function (data) {
+                        // Replace the content of the table container with the new table
+                        $('.tableContainer').html(data);
+                    },
+                    error: function () {
+                        console.error('Error loading table');
+                    }
+                });
+            }
+        });
+    </script>
     
 </head>
 <body>
@@ -109,7 +159,15 @@
  
             </table>
         </div>
-
+            <div class="loadToggleContainer">
+                <button id="loadToggleBtn">Load More</button>
+        </div>  
+        
+        <div class="loadTableContainer">
+        <button id="loadTable1Btn">Load Table 1</button>
+        <button id="loadTable2Btn">Load Table 2</button>
+        <button id="loadTable3Btn">Load Table 3</button>
+    </div>  
     </div>
 </body>
 </html>
